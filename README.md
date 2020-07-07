@@ -6,18 +6,18 @@ Data was webscraped from Kickstarter and provided by General Assmebly during the
 
 # Data Cleaning
 Data were cleaned using MySQL. 
-what was changed from the original file:
+
+Here is what was changed from the original file:
 1. Removed all live Kickstarter campaigns as one is unable to analyze their success.
-2. Combined Film &amp; Video with Film & Video.
-3. Deleted all observations with campaign goals below $100 and above $1,000,000. Removing these observations mean conclusions can only apply to those within the goal range of $100-$1,000,000.
-4. Created a binary variable for success based on status. Where:
+2. Deleted all observations with campaign goals below $100 and above $1,000,000. Removing these observations means that conclusions can only apply to campaigns within the goal range of $100-$1,000,000.
+3. Created a binary variable for success based on status. Where:
 1 = successfully funded Kickstarter campaign
 0 = failed, suspended, or postponed campaign.
-5. Determined the start date of the campaign given the funded date and duration.
-6. Determined the start day name (ie: Monday)
-7. Determined the start month name (ie: June)
-8. Determined the start posting time (ie: afternoon)
-9. Dropped all columns not needed for this analysis.
+4. Determined the start date of the campaign given the funded date and duration.
+5. Determined the start day name (ie: Monday)
+8. Determined the start month name (ie: June)
+9. Determined the start posting time (ie: afternoon)
+10. Dropped all columns not needed for this analysis.
 
 The final orginization of the data can be found below in Table 1.
 
@@ -48,7 +48,7 @@ Variable descriptions:
 * start_month_name - the month the campaign was posted.
 
 # Data Exploration
-I first checked the normality of the continuous variables used. The standard density plots of each numerical variable used in this analysis can be found in Figure 1.
+I first checked the normality of the continuous variables used. The standard density plots of each numerical variable used in this analysis can be found in figure 1.
 
 Figure 1. Density Plots of Continuous Variables
 ![Density Plots](https://github.com/albertfrantz/Kickstarter-Success-Analysis/blob/master/densityplots.JPG)
@@ -65,7 +65,7 @@ Figure 3. Bar Charts for Categorical Variables
 
 # Models
 
-I fit three different models to analyze the success of Kickstarter campaigns. I first fit a linear probability model to determine the likelihood of success on the binary variable campaign_status. I then fit a linear probability model with log-transformed goal as this variable due to its non-normality. Finally, because linear probability models can, in theory, produce values below 0 and above 1 I also included a logit model. The logit model would not allow for values below 0 or above 1. The models can be found below:
+I fit three different models to analyze the success of Kickstarter campaigns. I first fit a linear probability model to determine the likelihood of success on the binary variable campaign_status. I then fit a linear probability model with log-transformed goal due to its non-normality. Finally, because linear probability models can, in theory, produce values below 0 and above 1 I also included a logit model. The logit model would not allow for values below 0 or above 1. The models can be found below:
 
 * Model 1: LPM
   * campaign_status ~ goal + levels + duration + category + start_day_name + start_posting_time + start_month_name
@@ -88,6 +88,8 @@ Model 3 | 1.19
 
 The regression results of all three models can be found below in table 3. More clear findings can be found in the conclusion section. 
 
+Table 3. Regression Results
+
 ![Regression Results](https://github.com/albertfrantz/Kickstarter-Success-Analysis/blob/master/kickstarterresults.png)
 
 # Predictions
@@ -106,4 +108,4 @@ A Kickstart campaign with the highest probability of being successfully funded w
 * In the dance category.
 * Posted in the afternoon on a Tuesday in February.
 
-R^2 is low for LPM and Log LPM as many other factors go into if a campaign will be successful. A lot of reasons for a Kickstarters success may be difficult to quantify into a variable. Being able to determine overall project quality may be a big determinant of a Kickstarter's success. A binary variable determining if the project creator had previously funded a project might help determine the quality of projects. If the creator had already successfully funded a project that may be representative of if she has quality projects and control for project quality.
+R^2 is low for LPM and Log LPM as many other factors, beyond the variables used here, go into if a campaign will be successful. Determining the reasons for a successfull Kickstarter campaign may be difficult to quantify into various variables. Being able to determine overall project quality may be a big determinant of a Kickstarter's success. A binary variable determining if the project creator had previously funded a project might help determine the quality of projects. If the creator had already successfully funded a project that may be representative of if she has quality projects and control for project quality.
