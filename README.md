@@ -76,6 +76,8 @@ Model 3 | 1.19
 
 Regression results of all three models can be found below in table 3. More clear findings can be found in the conclusion section. 
 
+
+# things to do: import photos, results, predictions, conclusion
 # Predictions
 
 # Conclusion
