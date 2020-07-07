@@ -109,3 +109,5 @@ A Kickstart campaign with the highest probability of being successfully funded w
 * Posted in the afternoon on a Tuesday in February.
 
 R^2 is low for LPM and Log LPM as many other factors, beyond the variables used here, go into if a campaign will be successful. Determining the reasons for a successfull Kickstarter campaign may be difficult to quantify into various variables. Being able to determine overall project quality may be a big determinant of a Kickstarter's success. A binary variable determining if the project creator had previously funded a project might help determine the quality of projects. If the creator had already successfully funded a project that may be representative of if she has quality projects and control for project quality.
+
+*.sql linguist-detectable
